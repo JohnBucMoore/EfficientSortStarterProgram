@@ -12,7 +12,7 @@ public class DifferentSorters {
     public void sortWithCompareTo() {
         EarthQuakeParser parser = new EarthQuakeParser();
         String source = "data/nov20quakedata.atom";
-        //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
+        //String source = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         ArrayList<QuakeEntry> list  = parser.read(source);
         Collections.sort(list);
         for(QuakeEntry qe: list) {
@@ -24,7 +24,7 @@ public class DifferentSorters {
     public void sortByMagnitude() {
         EarthQuakeParser parser = new EarthQuakeParser();
         String source = "data/nov20quakedata.atom";
-        //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
+        //String source = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         ArrayList<QuakeEntry> list  = parser.read(source);
         Collections.sort(list, new MagnitudeComparator());
         for(QuakeEntry qe: list) {
@@ -36,7 +36,7 @@ public class DifferentSorters {
     public void sortByDistance() {
         EarthQuakeParser parser = new EarthQuakeParser();
         String source = "data/nov20quakedata.atom";
-        //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
+        //String source = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         ArrayList<QuakeEntry> list  = parser.read(source);
         // Location is Durham, NC
         Location where = new Location(35.9886, -78.9072);
@@ -45,5 +45,16 @@ public class DifferentSorters {
             System.out.println(qe);
         }
 
+    }
+
+    public void test() {
+        sortWithCompareTo();
+        //sortByMagnitude();
+        //sortByDistance();
+    }
+
+    public static void main(String[] args) {
+        DifferentSorters sorters = new DifferentSorters();
+        sorters.test();
     }
 }
